@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splash Salon & Spa</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+        :root {
+            --color-lavender: #9FB3DF;
+            --color-purple: #C68EFD;
+            --color-pink: #E9A5F1;
+            --color-peach: #FFCFCF;
+            --color-white: #FFFFFF;
+            --color-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-dark);
+            line-height: 1.6;
+            background-color: #faf8ff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--color-lavender), var(--color-purple));
+            color: var(--color-white);
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-white);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--color-peach);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--color-peach);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 600px;
+            background: url('/api/placeholder/1200/600') center/cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-pink), var(--color-purple));
+            color: var(--color-white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(201, 142, 253, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(201, 142, 253, 0.4);
+        }
+
+        /* About Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--color-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--color-purple), var(--color-pink));
+            margin: 15px auto 0;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content {
+            padding: 20px;
+        }
+
+        .about-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--color-dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-content h3::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(to right, var(--color-lavender), var(--color-purple));
+            border-radius: 10px;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background-color: #f5f0ff;
+            padding: 80px 0;
+        }
+
+        .philosophy-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .philosophy-item {
+            background-color: var(--color-white);
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .philosophy-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .philosophy-item-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--color-lavender), var(--color-purple));
+            color: var(--color-white);
+        }
+
+        .philosophy-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--color-dark);
+        }
+
+        .philosophy-item p {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Team Section */
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .team-member {
+            background-color: var(--color-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .team-member-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .team-member-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .team-member-info p {
+            color: var(--color-purple);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        /* Products Section */
+        .products {
+            background-color: #f8f5ff;
+        }
+
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product-item {
+            background-color: var(--color-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .product-info p {
+            color: var(--color-purple);
+            font-weight: 500;
+        }
+
+        /* Salon Photos Section */
+        .salon-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .salon-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 300px;
+        }
+
+        .salon-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .salon-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #f3f0ff, #ffe6f2);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .contact-info {
+            padding: 20px;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-lavender), var(--color-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--color-white);
+            font-size: 1.2rem;
+        }
+
+        .contact-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .appointment-form {
+            background-color: var(--color-white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-purple);
+            box-shadow: 0 0 0 3px rgba(201, 142, 253, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--color-purple), var(--color-lavender));
+            color: var(--color-white);
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .footer-heading {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -8px;
+            left: 0;
+            background-color: var(--color-peach);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-peach);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 30px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-container,
+            .team-container,
+            .contact-container,
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-container,
+            .product-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 20px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .philosophy-container,
+            .product-gallery,
+            .salon-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Splash</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Splash Salon & Spa</h1>
+            <p>Where beauty meets relaxation. Experience premium treatments and services that will leave you feeling refreshed and rejuvenated.</p>
+            <a href="#contact" class="btn">Book Appointment</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="main.jpeg" alt="Splash Salon & Spa Interior">
+                </div>
+                <div class="about-content">
+                    <h3>Our Story</h3>
+                    <p>Founded in 2015, Splash Salon & Spa has been a sanctuary of beauty and wellness in the heart of the city. Our journey began with a simple vision: to create a space where clients could escape the hustle and bustle of everyday life and indulge in self-care rituals that nourish both body and soul.</p>
+                    <p>Over the years, we have grown to become a premier destination for those seeking exceptional beauty treatments, relaxing spa experiences, and personalized care. Our team of skilled professionals is dedicated to providing services that enhance your natural beauty and promote overall well-being.</p>
+                    <p>At Splash, we believe that true beauty comes from within, and our goal is to help you look and feel your absolute best.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy">
+        <div class="container">
+            <h2 class="section-title">Our Philosophy</h2>
+            <div class="philosophy-container">
+                <div class="philosophy-item">
+                    <div class="philosophy-item-icon">M</div>
+                    <h3>Mission</h3>
+                    <p>To deliver exceptional beauty and wellness experiences that inspire confidence and promote self-love. We strive to provide a sanctuary where clients can escape, rejuvenate, and discover their most radiant selves through personalized care and premium services.</p>
+                </div>
+                <div class="philosophy-item">
+                    <div class="philosophy-item-icon">V</div>
+                    <h3>Vision</h3>
+                    <p>To be recognized as the ultimate destination for beauty and wellness, setting industry standards through innovation, expertise, and an unwavering commitment to client satisfaction. We envision a world where self-care is prioritized and accessible to all.</p>
+                </div>
+                <div class="philosophy-item">
+                    <div class="philosophy-item-icon">G</div>
+                    <h3>Goals</h3>
+                    <p>To continuously evolve our services and techniques to meet the changing needs of our clients. To foster a positive, inclusive environment where diversity is celebrated. To maintain sustainable practices that honor our commitment to the planet while delivering exceptional results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section">
+        <div class="container">
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="team-container">
+                <div class="team-member">
+                    <img src="a1.jpeg" alt="Owner">
+                    <div class="team-member-info">
+                        <h3>Sophia Williams</h3>
+                        <p>Owner & Founder</p>
+                        <p>With over 15 years of experience in the beauty industry, Sophia brings vision, passion, and expertise to every aspect of Splash Salon & Spa.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="b1.jpeg" alt="Product Manager">
+                    <div class="team-member-info">
+                        <h3>Emma Thompson</h3>
+                        <p>Product Manager</p>
+                        <p>Emma curates our premium product selection, ensuring we offer only the finest, most effective beauty and wellness items to our clients.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="c1.jpeg" alt="Manager">
+                    <div class="team-member-info">
+                        <h3>Daniel Carter</h3>
+                        <p>Salon Manager</p>
+                        <p>Daniel oversees daily operations, ensuring every client receives the exceptional service and attention they deserve.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section products">
+        <div class="container">
+            <h2 class="section-title">Our Premium Products</h2>
+            <div class="product-gallery">
+                <div class="product-item">
+                    <img src="conditioner.jpeg" alt="Hydrating conditioner">
+                    <div class="product-info">
+                        <h3>Hydrating conditioner</h3>
+                        <p>$45.00</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="1122.jpeg" alt="Rejuvenating Face Mask">
+                    <div class="product-info">
+                        <h3>Rejuvenating Face Mask</h3>
+                        <p>$38.00</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="hairoil.jpeg" alt="Nourishing Hair Oil">
+                    <div class="product-info">
+                        <h3>Nourishing Hair Oil</h3>
+                        <p>$32.00</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="scrub.jpeg" alt="Exfoliating Body Scrub">
+                    <div class="product-info">
+                        <h3>Exfoliating Body Scrub</h3>
+                        <p>$29.00</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="oil.jpeg" alt="Essential Oil Blend">
+                    <div class="product-info">
+                        <h3>Essential Oil Blend</h3>
+                        <p>$25.00</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="lotion.jpeg" alt="Luxury Body Lotion">
+                    <div class="product-info">
+                        <h3>Luxury Body Lotion</h3>
+                        <p>$40.00</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="cccc.jpeg" alt="Vitamin C Serum">
+                    <div class="product-info">
+                        <h3>Vitamin C Serum</h3>
+                        <p>$52.00</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="mask.jpeg" alt="Moisturizing Face Mask">
+                    <div class="product-info">
+                        <h3>Moisturizing Face Mask</h3>
+                        <p>$37.00</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="eyegel.jpeg" alt="Revitalizing Eye Gel">
+                    <div class="product-info">
+                        <h3>Revitalizing Eye Gel</h3>
+                        <p>$42.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Salon Gallery Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Beautiful Space</h2>
+            <div class="salon-gallery">
+                <div class="salon-item">
+                    <img src="s1.jpeg" alt="Salon Interior 1">
+                </div>
+                <div class="salon-item">
+                    <img src="s2.jpeg" alt="Salon Interior 2">
+                </div>
+                <div class="salon-item">
+                    <img src="spa.jpeg" alt="Spa Room">
+                </div>
+                <div class="salon-item">
+                    <img src="re.jpeg" alt="Reception Area">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Contact & Book</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-detail">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            <h4>Address</h4>
+                            <p>123 Beauty Avenue, Suite 200<br>Serene City, SC 45678</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>(555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>info@splashsalonspa.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-text">
+                            <h4>Hours</h4>
+                            <p>Monday - Friday: 9AM - 8PM<br>Saturday: 9AM - 6PM<br>Sunday: 10AM - 4PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="appointment-form">
+                    <h3>Book an Appointment</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Preferred Time</label>
+                            <input type="time" id="time" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Select Service</label>
+                            <select id="service" class="form-control" required>
+                                <option value="">Select a service</option>
+                                <option value="haircut">Haircut & Style</option>
+                                <option value="coloring">Hair Coloring</option>
+                                <option value="facial">Facial Treatment</option>
+                                <option value="massage">Massage Therapy</option>
+                                <option value="manicure">Manicure & Pedicure</option>
+                                <option value="makeup">Professional Makeup</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Book Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">Splash</div>
+                    <p>Splash Salon & Spa is dedicated to providing exceptional beauty and wellness services in a relaxing and luxurious environment.</p>
+                </div>
+                <div class="footer-links-container">
+                    <h4 class="footer-heading">Quick Links</h4>
+		<h4>www.splashsalon&spa.com
+                    <ul class="footer-links">
+                        <li><a href="#home
